@@ -13,10 +13,12 @@ import { CartContext } from './contexts/CartContext';
 
 function App() {
 	const [products] = useState(data);
-	const [cart, setCart] = useState([]);
+	console.log(JSON.parse(localStorage.getItem('cart')))
+	const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
 
 	const addItem = item => {
 		setCart([...cart, item]);
+		localStorage.setItem('cart',JSON.stringify([...cart, item]))
 	};
 	
 	const removeItem = itemId => {
@@ -25,6 +27,7 @@ function App() {
 		})
 		console.log('new cart', newCart)
 		setCart(newCart)
+		localStorage.setItem('cart',JSON.stringify(newCart))
 	};
 
 	return (
