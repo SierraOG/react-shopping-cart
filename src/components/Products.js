@@ -8,9 +8,8 @@ import Product from './Product';
 
 const Products = () => {
 	const { products, addItem } = useContext(ProductContext);
-	console.log(products)
 	return (
-		<div className="products-container">
+		<div className="products-container" style={{maxWidth: '1000px'}}>
 			{products.map(product => (
 				<Product
 					key={product.id}
