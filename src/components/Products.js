@@ -9,7 +9,7 @@ import Product from './Product';
 const Products = () => {
 	const { products, addItem } = useContext(ProductContext);
 	return (
-		<div className="products-container" style={{maxWidth: '1000px'}}>
+		<div className="products-container" style={{maxWidth: '1100px'}}>
 			{products.map(product => (
 				<Product
 					key={product.id}

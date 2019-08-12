@@ -17,8 +17,13 @@ function App() {
 	const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
 
 	const addItem = item => {
-		setCart([...cart, item]);
-		localStorage.setItem('cart',JSON.stringify([...cart, item]))
+		if (cart.filter(cartItem => (cartItem.id === item.id)).length === 0) {
+			setCart([...cart, item]);
+			localStorage.setItem('cart',JSON.stringify([...cart, item]))
+		}
+		else {
+			window.alert('That item is already in your cart')
+		}
 	};
 	
 	const removeItem = itemId => {
@@ -39,7 +44,7 @@ function App() {
 					{/* Routes */}
 					<Route exact path="/" component={Products} />
 
-					<Route exact path="/" component={ShoppingCart} />
+					<Route exact path="/cart" component={ShoppingCart} />
 				</CartContext.Provider>
 			</ProductContext.Provider>
 		</div>
